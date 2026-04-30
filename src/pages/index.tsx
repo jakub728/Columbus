@@ -1,9 +1,9 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
-import Header from "@/components/header";
+import Header from "@/components/Header";
+import ProductCard from "@/components/ProductCard";
 import { GetServerSideProps } from "next";
 import { type Product, type ProductResponse } from "@/types/productType";
-
 
 export const getServerSideProps: GetServerSideProps<
   ProductResponse
@@ -34,10 +34,7 @@ export const getServerSideProps: GetServerSideProps<
   }
 };
 
-
 export default function Home({ products }: { products: Product[] }) {
-  console.log(products);
-
   return (
     <>
       <Head>
@@ -48,7 +45,19 @@ export default function Home({ products }: { products: Product[] }) {
       </Head>
       <div className={`${styles.page}`}>
         <Header />
-        <main className={styles.main}>somethiung</main>
+        <main className={styles.main}>
+          <h1>List of Products:</h1>
+          <ul>
+            {products.map((product) => (
+              <li
+                key={product.articleNumber}
+                style={{ listStyle: "none", margin: "2rem" }}
+              >
+                <ProductCard data={product} />
+              </li>
+            ))}
+          </ul>
+        </main>
       </div>
     </>
   );

@@ -6,12 +6,13 @@ export interface Product {
   gtin: string;
   image: {
     url: string;
-    aleText: string;
+    altText: string;
   };
-  promotion: {
-    name: string;
-    precentage: number;
+  promotion?: {
+    name?: string;
+    percentage?: number;
   };
+  price: number;
   title: string;
   url: string;
 }
