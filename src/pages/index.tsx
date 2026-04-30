@@ -1,8 +1,43 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import Header from "@/components/header";
+import { GetServerSideProps } from "next";
+import { type Product, type ProductResponse } from "@/types/productType";
 
-export default function Home() {
+
+export const getServerSideProps: GetServerSideProps<
+  ProductResponse
+> = async () => {
+  try {
+    const res = await fetch(
+      "https://1jbod7rtr5.execute-api.eu-central-1.amazonaws.com/prod/exercise",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": process.env.API_KEY || "",
+        },
+      },
+    );
+
+    if (!res.ok) throw new Error("Błąd pobierania");
+
+    const products: ProductResponse = await res.json();
+    const sortedProducts = products.products;
+
+    return {
+      props: { products: sortedProducts },
+    };
+  } catch (error) {
+    console.error(error);
+    return { props: { products: [] } };
+  }
+};
+
+
+export default function Home({ products }: { products: Product[] }) {
+  console.log(products);
+
   return (
     <>
       <Head>
