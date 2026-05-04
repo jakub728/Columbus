@@ -21,3 +21,13 @@ export interface ProductResponse {
   products: Product[];
 }
 
+export interface CartProduct {
+  title: string;
+}
+
+export interface Cart {
+  count: number;
+  products: CartProduct[];
+  addProduct: (product: CartProduct) => void;
+  emptyCart: () => void;
+}

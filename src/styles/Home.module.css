@@ -63,8 +63,9 @@
 .cartSlider {
   position: absolute;
   background-color: var(--three);
+  width: 300px;
   top: 30;
-  left: -40;
+  left: -140;
   padding: 2rem;
 }
 .emptyCartButton {

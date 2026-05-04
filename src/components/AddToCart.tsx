@@ -19,7 +19,7 @@ export default function AddToCart({ title }: { title: string }) {
       <button
         className={styles.productButton}
         onClick={() => {
-          addProduct();
+          addProduct({ title });
           notify();
         }}
       >

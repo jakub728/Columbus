@@ -1,11 +1,6 @@
 "use client";
 import { createContext, useState, useEffect } from "react";
-
-export interface Cart {
-  count: number;
-  addProduct: () => void;
-  emptyCart: () => void;
-}
+import { type CartProduct, type Cart } from "@/types/productType";
 
 export const CartContext = createContext<Cart | undefined>(undefined);
 
@@ -14,28 +9,30 @@ export default function CartProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [count, setCount] = useState<number>(0);
+  const [products, setProducts] = useState<CartProduct[]>([]);
 
   useEffect(() => {
-    const savedCount = localStorage.getItem("cart_count");
-    if (savedCount) {
-      setCount(parseInt(savedCount, 10));
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setProducts(JSON.parse(savedCart));
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("cart_count", count.toString());
-  }, [count]);
+    localStorage.setItem("cart", JSON.stringify(products));
+  }, [products]);
 
-  function addProduct() {
-    setCount(count + 1);
+  function addProduct(product: CartProduct) {
+    setProducts((prev) => [...prev, product]);
   }
   function emptyCart() {
-    setCount(0);
+    setProducts([]);
   }
 
   return (
-    <CartContext.Provider value={{ count, addProduct, emptyCart }}>
+    <CartContext.Provider
+      value={{ count: products.length, products, addProduct, emptyCart }}
+    >
       {children}
     </CartContext.Provider>
   );

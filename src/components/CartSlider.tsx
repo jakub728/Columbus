@@ -11,7 +11,8 @@ export default function Cart() {
   if (!cart) {
     return null;
   }
-  const { count, emptyCart } = cart;
+
+  const { count, products, emptyCart } = cart;
 
   return (
     <div
@@ -25,12 +26,11 @@ export default function Cart() {
       {showDelete &&
         (count > 0 ? (
           <div className={styles.cartSlider}>
-            {count > 1 ? (
-              <p>You have {count} products in cart</p>
-            ) : (
-              <p>You have {count} product in cart</p>
-            )}
-
+            <ul>
+              {products.map((product, index) => (
+                <li key={index}>{product.title}</li>
+              ))}
+            </ul>
             <button onClick={emptyCart} className={styles.emptyCartButton}>
               Empty cart
             </button>
