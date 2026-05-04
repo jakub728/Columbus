@@ -1,22 +1,19 @@
-import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
-import styles from "@/styles/Home.module.css";
+import styles from "../styles/Home.module.css";
+import Cart from "./CartIcon";
 
 export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         <Image
-          src="/next.svg"
-          alt="Next Logo"
-          loading="eager"
-          width={120}
+          src="/columbus_logo_blue.webp"
+          alt="Columbus Logo"
+          priority
+          width={200}
           height={40}
         />
-        <div className={styles.headerCart}>
-          <ShoppingCart className={styles.headerCartIcon} />
-          <p className={styles.headerCartState}>0</p>
-        </div>
+        <Cart />
       </div>
     </header>
   );

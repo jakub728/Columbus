@@ -20,3 +20,4 @@ export interface Product {
 export interface ProductResponse {
   products: Product[];
 }
+
