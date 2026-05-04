@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps<
       },
     );
 
-    if (!res.ok) throw new Error("Błąd pobierania");
+    if (!res.ok) throw new Error("Error while feching");
 
     const products: ProductResponse = await res.json();
     const sortedProducts = products.products;
