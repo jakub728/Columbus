@@ -4,7 +4,7 @@ A modern, responsive product listing application built with **Next.js**, **TypeS
 
 ## 🚀 Features
 
-- **Asynchronous Data Fetching**: Fetches product data from a secure REST API using custom headers (`x-api-key`).
+- **Asynchronous Data Fetching**: Fetches product data from a secure REST API using custom headers (``).
 - **Global State Management**: Implementation of `CartContext` to manage the shopping cart state across the entire application.
 - **Persistence**: Cart data is synchronized with `localStorage`, ensuring the state survives page refreshes.
 - **Responsive UI**: Hand-crafted styling using **CSS Modules**, strictly following the "no-framework" requirement.
@@ -42,6 +42,13 @@ A modern, responsive product listing application built with **Next.js**, **TypeS
    ```
 
 3. **Run the development server:**
+   Create a `.env.local` file in the root directory and add the API key:
+   ```bash
+   API-KEY=x-api-key
+   ```
+
+
+4. **Run the development server:**
    ```bash
    pnpm dev
    ```
@@ -49,7 +56,7 @@ A modern, responsive product listing application built with **Next.js**, **TypeS
 ## 🏗️ Architecture & Decisions
 
 **Data Modeling**
-Based on the provided JSON schema, I created robust TypeScript interfaces to ensure type safety during data fetching and component rendering. All product properties (price, discount, brand, etc.) are strictly typed.
+Based on the provided JSON schema, I created robust TypeScript interfaces to ensure type safety during data fetching and component rendering. All product properties (image, title, brand, description, price, discount) are strictly typed.
 
 **State Persistence**
 To provide a seamless user experience, the cart's state is stored in localStorage. I used a synchronized useEffect hook within the CartProvider to handle reading and writing data, ensuring no hydration mismatches in Next.js (client-side only execution).
