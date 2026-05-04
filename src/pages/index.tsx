@@ -38,7 +38,7 @@ export default function Home({ products }: { products: Product[] }) {
   return (
     <>
       <Head>
-        <title>Columbus app</title>
+        <title>Columbus products</title>
         <meta name="description" content="Product catalog for Columbus" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/columbusglobal_logo.ico" />

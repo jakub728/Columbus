@@ -29,7 +29,7 @@ A modern, responsive product listing application built with **Next.js**, **TypeS
 1. **Clone the repository:**
 
    ```bash
-   git clone [https://github.com/jakub728/Columbus.git](https://github.com/jakub728/Columbus.git)
+   git clone https://github.com/jakub728/Columbus.git
    cd columbus
 
    ```
