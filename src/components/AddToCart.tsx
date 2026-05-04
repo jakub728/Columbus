@@ -1,8 +1,9 @@
 "use client";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
 import styles from "../styles/Home.module.css";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CartContext } from "@/context/CartContext";
+import { ShoppingCart } from "lucide-react";
 
 export default function AddToCart({ title }: { title: string }) {
   const notify = () => toast(`Product ${title} added to cart!`);
@@ -11,11 +12,7 @@ export default function AddToCart({ title }: { title: string }) {
   if (!cart) {
     return null;
   }
-  const { addProduct, count } = cart;
-
-  useEffect(() => {
-    console.log(count);
-  }, [count]);
+  const { addProduct } = cart;
 
   return (
     <>
@@ -27,9 +24,8 @@ export default function AddToCart({ title }: { title: string }) {
         }}
       >
         Add to cart
+        <ShoppingCart size={12} />
       </button>
-
-      
     </>
   );
 }

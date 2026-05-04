@@ -1,6 +1,6 @@
 "use client";
 import styles from "../styles/Home.module.css";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingBasket } from "lucide-react";
 import { useContext, useState } from "react";
 import { CartContext } from "@/context/CartContext";
 
@@ -16,24 +16,30 @@ export default function Cart() {
   return (
     <div
       className={styles.cart}
-      onMouseEnter={() => {
-        setShowDelete(true);
-      }}
-      onMouseLeave={() => {
-        setShowDelete(false);
+      onClick={() => {
+        setShowDelete(!showDelete);
       }}
     >
-      <ShoppingCart className={styles.cartIcon} />
-      {count > 0 && (
-        <>
-          <p className={styles.cartState}>{count}</p>
-          {showDelete && (
-            <div className={styles.emptyCart}>
-              <button onClick={emptyCart}>Empty cart</button>
-            </div>
-          )}
-        </>
-      )}
+      <ShoppingBasket className={styles.cartIcon} />
+      {count > 0 && <p className={styles.cartState}>{count}</p>}
+      {showDelete &&
+        (count > 0 ? (
+          <div className={styles.cartSlider}>
+            {count > 1 ? (
+              <p>You have {count} products in cart</p>
+            ) : (
+              <p>You have {count} product in cart</p>
+            )}
+
+            <button onClick={emptyCart} className={styles.emptyCartButton}>
+              Empty cart
+            </button>
+          </div>
+        ) : (
+          <div className={styles.cartSlider}>
+            <p>Cart is empty</p>
+          </div>
+        ))}
     </div>
   );
 }

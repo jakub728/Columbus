@@ -1,7 +1,7 @@
 .page {
   --background: #fafafa;
   --foreground: #fff;
-  --three: #909090;
+  --three: #ffffff;
 
   --text-primary: #000;
   --text-secondary: #666;
@@ -38,10 +38,13 @@
 /* Cart */
 .cart {
   position: relative;
+  z-index: 1;
+  cursor: pointer;
 }
 .cartIcon {
   height: 2rem;
   width: 2rem;
+  z-index: 1;
 }
 .cartState {
   position: absolute;
@@ -55,16 +58,34 @@
   justify-content: center;
   color: var(--foreground);
   background-color: red;
+  z-index: 2;
 }
-.emptyCart {
+.cartSlider {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  background-color: var(--three);
+  top: 30;
+  left: -40;
+  padding: 2rem;
 }
 .emptyCartButton {
-  position: absolute;
-  width: 50px;
-  height: 50px;
+  background-color: #ff0037;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  margin-top: 10px;
+}
+.emptyCartButton:hover {
+  background-color: #c20030;
+  color: black;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 /* Main Content */
@@ -185,6 +206,7 @@
   .page {
     --background: #000;
     --foreground: #000;
+    --three: #717171;
 
     --text-primary: #ededed;
     --text-secondary: #999;
