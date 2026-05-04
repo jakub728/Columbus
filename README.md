@@ -11,7 +11,6 @@ A modern, responsive product listing application built with **Next.js**, **TypeS
 - **Interactive Elements**:
   - Cart badge with real-time updates.
   - Interactive cart dropdown with "Empty Cart" functionality.
-  - Outside-click detection for better UX.
   - Toast notifications for user feedback.
 
 ## 🛠️ Tech Stack
