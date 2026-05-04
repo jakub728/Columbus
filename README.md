@@ -44,7 +44,7 @@ A modern, responsive product listing application built with **Next.js**, **TypeS
 3. **Run the development server:**
    Create a `.env.local` file in the root directory and add the API key:
    ```bash
-   API-KEY=x-api-key
+   API_KEY=x-api-key
    ```
 
 
